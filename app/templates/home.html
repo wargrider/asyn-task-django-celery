@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+<h1 class="text-info">Send Email using celery and without celery</h1>
+
+<p>1. <a href="{% url 'using_celery' %}">Using Celery</a></p>
+<p>2. <a href="{% url 'without_celery' %}">Without Celery</a></p>
+
+{% endblock %}

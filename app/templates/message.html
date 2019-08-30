@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% block title %}
+<title>Sending Email Form</title>
+{% endblock %}
+
+<h1 class="mt-2">Email Sending Form</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+      <br/>
+    <button type="submit" class="btn btn-success">Send Email</button>
+  </form>
+
+{% endblock %}
