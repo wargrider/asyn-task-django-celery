@@ -8,16 +8,26 @@ A Celery system can consist of multiple workers and brokers, giving way to high 
 
 You will need the following programmes properly installed on your computer.
 
-* [Python](https://www.python.org/) 3.5+
+* [Python](https://www.python.org/) 3.6+
 
 * Virtual Environment
 
+To install virtual environment on your system use:
+```bash
+apt-get install python3-venv
+```
 * RabbitMQ
 
-To install virtual environment on your system use:
+To install and run RabbitMQ in Ubuntu environment
+```bash
+# Installing RabbitMQ
+apt-get install -y erlang
+apt-get install rabbitmq-server
 
-apt-get install python3-venv
-
+# Enabling and starting RabbitMQ Service
+systemctl enable rabbitmq-server
+systemctl start rabbitmq-server
+```
 ## Installation and Running :
 
 ```bash
@@ -29,13 +39,16 @@ python3 -m venv venv
 
 source venv/bin/activate
 
-# install required packages for the project to run
+# Install required packages for the project to run
 pip install -r requirements.txt
 
 python manage.py migrate
 
 python manage.py runserver
+
+# Run Celery worker to work in background
+celery -A django_celery worker -l info
+
 ```
 
 Open Browser and Type http://127.0.0.1:8000
-
